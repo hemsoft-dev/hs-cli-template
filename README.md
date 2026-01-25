@@ -59,6 +59,17 @@ This template provides a solid foundation for creating professional CLI tools wi
   - Declaration files
   - Modern ES2022 target
 
+### Development Environment
+
+- **🐳 Dev Container Support**
+  - Pre-configured Docker development environment
+  - Node.js 22 LTS with TypeScript tooling
+  - GitHub CLI pre-installed
+  - Zsh with Oh My Zsh
+  - All VS Code extensions included
+  - Optimized for GitHub Copilot Workspace
+  - Consistent development across all platforms
+
 ## 🚀 Quick Start
 
 ### 1. Clone This Template
@@ -132,6 +143,26 @@ npm run dev hello
 npm run check
 ```
 
+### 5. (Optional) Use Dev Container
+
+For a consistent development environment across all platforms:
+
+```bash
+# Open in VS Code
+code .
+
+# Press F1 and select: Dev Containers: Reopen in Container
+```
+
+The dev container includes:
+- Node.js 22 LTS with all dependencies
+- GitHub CLI for authentication
+- All VS Code extensions pre-installed
+- Zsh shell with Oh My Zsh
+- Automatic setup on container creation
+
+See [`.devcontainer/README.md`](.devcontainer/README.md) for more details.
+
 ## 📖 Usage
 
 ### Development
@@ -198,7 +229,11 @@ hs-cli-template/
 │       ├── ai.ts           # AI service with Copilot SDK
 │       ├── banner.ts       # Branded ASCII logo
 │       └── config.ts       # Configuration system
+├── .devcontainer/          # Dev container configuration
+│   ├── devcontainer.json  # Container setup
+│   └── README.md          # Dev container docs
 ├── dist/                    # Compiled JavaScript (generated)
+├── .gitattributes          # Line ending enforcement
 ├── package.json            # Dependencies and scripts
 ├── tsconfig.json          # TypeScript configuration
 ├── eslint.config.js       # ESLint rules
