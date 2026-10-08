@@ -36,16 +36,16 @@ function getGhAuthStatus(): {
       }
     }
 
-    return { 
-      authenticated: !!active, 
-      active, 
-      authType: 'gh-cli' 
+    return {
+      authenticated: !!active,
+      active,
+      authType: 'gh-cli',
     };
   } catch {
-    return { 
-      authenticated: false, 
-      active: undefined, 
-      authType: 'gh-cli' 
+    return {
+      authenticated: false,
+      active: undefined,
+      authType: 'gh-cli',
     };
   }
 }
@@ -58,10 +58,10 @@ export async function showConfig() {
 
   try {
     spinner.start('Checking status...');
-    
+
     // Get GitHub CLI auth status (source of truth)
     const auth = getGhAuthStatus();
-    
+
     spinner.stop();
 
     console.log(chalk.cyan('\n⚙️  HS CLI Configuration\n'));

@@ -4,6 +4,14 @@
 
 This template provides a solid foundation for creating professional CLI tools with AI capabilities, beautiful terminal UI, and enterprise-grade quality tooling.
 
+## SFL pull request reviews
+
+Repositories adopting this template can follow the [organization onboarding guide](https://github.com/hemsoft-dev/set-it-free-loop/blob/main/docs/ORGANIZATION-ONBOARDING.md) to install the checksum-verified SFL CLI, deploy the reviewer through a pull request, and enable its strict Actions-owned merge gate. Review the deployment before enabling that gate.
+
+For a same-repository pull request targeting the default branch, register one review with `gh sfl review --repo hemsoft-dev/REPOSITORY --pr NUMBER`, then wait for a clean review bound to its current head, base and context. Forks and other target branches are outside reviewer admission. After a base or review-context change, update the branch to a new head before registering another review. Use `gh sfl status --repo hemsoft-dev/REPOSITORY` to inspect the installed version and drift.
+
+`SFL_ENABLED=false` pauses request processing and result observation while context invalidation remains active. The required gate stays enforced; pausing does not authorize merging an unreviewed change. Re-enable processing to resume reviews, or follow the owner's approved uninstall procedure in the onboarding guide. Template-derived repositories should make their own explicit onboarding choice rather than assume this repository's installed settings apply to them.
+
 ## ✨ What's Included
 
 ### Core Infrastructure
@@ -89,6 +97,7 @@ git init
 ### 2. Customize Your CLI
 
 **Update `package.json`:**
+
 ```json
 {
   "name": "@yourorg/your-cli-name",
@@ -100,22 +109,26 @@ git init
 ```
 
 **Update branding in `src/lib/banner.ts`:**
+
 - Change the ASCII logo (use [patorjk.com/software/taag](https://patorjk.com/software/taag/))
 - Customize gradient colors
 - Update branding text
 - Modify version and taglines
 
 **Update `src/lib/config.ts`:**
+
 - Change `projectName` in the Conf constructor
 - Add any custom config fields you need
 
 **Update `src/index.ts`:**
+
 - Change `program.name()` to your CLI name
 - Update description
 - Add your custom commands
 
 **Update auth references:**
 Find and replace in `src/commands/auth.ts` and `src/commands/config.ts`:
+
 - `"HS CLI"` → Your CLI name
 - `"hs-cli"` → Your CLI command name
 
@@ -126,6 +139,7 @@ npm install
 ```
 
 This will:
+
 - Install all dependencies
 - Set up Husky pre-commit hooks automatically
 - Configure git hooks for quality checks
@@ -155,6 +169,7 @@ code .
 ```
 
 The dev container includes:
+
 - Node.js 22 LTS with all dependencies
 - GitHub CLI for authentication
 - All VS Code extensions pre-installed
@@ -205,12 +220,13 @@ npm run check
 The template includes automatic quality checks that run before every commit:
 
 - ✅ **ESLint** on staged files with auto-fix
-- ✅ **Prettier** formatting on staged files  
+- ✅ **Prettier** formatting on staged files
 - ✅ **TypeScript** type checking
 
 If any check fails, the commit is blocked until you fix the issues.
 
 **To skip hooks** (not recommended):
+
 ```bash
 git commit --no-verify
 ```
@@ -313,10 +329,7 @@ Edit `src/lib/banner.ts`:
 
 ```typescript
 // Change ASCII art
-const LOGO_LINES = [
-  '  Your ASCII',
-  '  Logo Here',
-];
+const LOGO_LINES = ['  Your ASCII', '  Logo Here'];
 
 // Customize gradients
 const myGradient = gradient(['#ff0000', '#00ff00']);
@@ -327,6 +340,7 @@ const myGradient = gradient(['#ff0000', '#00ff00']);
 ### Styled Help
 
 The template includes custom help styling with:
+
 - Lightning bolt for Usage
 - Gradient-decorated section headers
 - Italic gold descriptions with sparkles
@@ -351,6 +365,7 @@ await ai.close();
 ```
 
 **Tips:**
+
 - Use different system messages for different use cases
 - Model can be overridden per instance
 - Always call `close()` (use try/finally)
@@ -372,11 +387,12 @@ config.set('yourKey', 'yourValue');
 // Add schema in src/lib/config.ts
 export interface CLIConfig {
   defaultModel: string;
-  yourKey: string;  // Add your fields
+  yourKey: string; // Add your fields
 }
 ```
 
 Config is stored at:
+
 - Windows: `%APPDATA%/hs-cli/Config/config.json`
 - macOS: `~/Library/Preferences/hs-cli/Config/config.json`
 - Linux: `~/.config/hs-cli/Config/config.json`
@@ -394,6 +410,7 @@ The template uses strict TypeScript settings:
 ## 📦 Dependencies
 
 ### Production
+
 - `@github/copilot-sdk` - AI capabilities
 - `commander` - CLI framework
 - `chalk`, `boxen`, `ora` - Terminal styling
@@ -404,6 +421,7 @@ The template uses strict TypeScript settings:
 - `log-symbols` - Status symbols
 
 ### Development
+
 - `typescript` - Type system
 - `tsx` - TypeScript execution
 - `eslint` - Linting
@@ -416,6 +434,7 @@ The template uses strict TypeScript settings:
 ### Command Implementation
 
 ✅ **Do:**
+
 - Always close AIService in finally block
 - Use spinners for long operations
 - Provide helpful error messages
@@ -423,6 +442,7 @@ The template uses strict TypeScript settings:
 - Handle errors gracefully
 
 ❌ **Don't:**
+
 - Leave sessions open
 - Use console.log for commands (use chalk/boxen)
 - Forget to call `process.exit(1)` on errors
@@ -431,6 +451,7 @@ The template uses strict TypeScript settings:
 ### Code Quality
 
 ✅ **Do:**
+
 - Write type-safe code
 - Use Prettier formatting
 - Follow ESLint rules
@@ -438,6 +459,7 @@ The template uses strict TypeScript settings:
 - Test before committing
 
 ❌ **Don't:**
+
 - Use `any` types
 - Skip type annotations
 - Ignore linting errors
@@ -496,4 +518,4 @@ MIT © HemSoft Developments
 
 **Built with ❤️ by HemSoft Developments**
 
-*This template is based on the architecture of Smart Git CLI*
+_This template is based on the architecture of Smart Git CLI_

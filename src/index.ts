@@ -143,7 +143,10 @@ configCmd
   .description('Set a configuration value (model)')
   .action(setConfigValue);
 
-configCmd.command('reset').description('Reset configuration to defaults').action(resetConfigCommand);
+configCmd
+  .command('reset')
+  .description('Reset configuration to defaults')
+  .action(resetConfigCommand);
 
 // Auth commands
 const authCmd = program.command('auth').description('Manage GitHub authentication');

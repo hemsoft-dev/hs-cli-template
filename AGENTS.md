@@ -99,6 +99,8 @@ export async function someCommand(options: Options) {
 3. **Test Thoroughly**: The template must work out-of-the-box
 4. **Consider Migration**: If breaking, document how to migrate
 
+SFL onboarding and recovery are documented in README.md. Derived repositories choose their own deployment and strict reviewer gate; do not assume this template’s repository settings transfer with its files. `SFL_ENABLED=false` pauses review processing while preserving required-gate enforcement and context invalidation.
+
 ### Quality Gates (Automated)
 
 - **Pre-commit**: ESLint + Prettier run automatically via Husky
