@@ -6,6 +6,8 @@ This template provides a solid foundation for creating professional CLI tools wi
 
 ## SFL pull request reviews
 
+This SFL distribution supports personal `HemSoft` and organization `hemsoft-dev` targets. Creating a repository from this template under another owner does not authorize or configure an SFL deployment there.
+
 Repositories adopting this template can follow the [organization onboarding guide](https://github.com/hemsoft-dev/set-it-free-loop/blob/main/docs/ORGANIZATION-ONBOARDING.md) to install the checksum-verified SFL CLI, deploy the reviewer through a pull request, and enable its strict Actions-owned merge gate. Review the deployment before enabling that gate.
 
 For a same-repository pull request targeting the default branch, register one review with `gh sfl review --repo hemsoft-dev/REPOSITORY --pr NUMBER`, then wait for a clean review bound to its current head, base and context. Forks and other target branches are outside reviewer admission. After a base or review-context change, update the branch to a new head before registering another review. Use `gh sfl status --repo hemsoft-dev/REPOSITORY` to inspect the installed version and drift.
